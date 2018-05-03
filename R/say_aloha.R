@@ -18,6 +18,12 @@
 #' @export
 
 say_aloha <- function(name, print = TRUE) {
+  if (!(is.character(name) & nchar(name) > 0)) {
+    stop("Name must be a non empty character.
+         Input a name you want to say aloha to!")
+  }
+
+  stopifnot(is.logical(print))
 
   message <- paste("Aloha,",
                    name,
@@ -31,10 +37,3 @@ say_aloha <- function(name, print = TRUE) {
 
   invisible(message)
 }
-
-if (!(is.character(name) & nchar(name) > 0)) {
-  stop("Name must be a non empty character.
-       Input a name you want to say aloha to!")
-}
-
-stopifnot(is.logical(print))
